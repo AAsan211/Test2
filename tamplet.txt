@@ -1,0 +1,3 @@
+style the "reviews" page separately from other pages make the page more appealing with modern styling  here is the css code '     '
+and here is the reviews page html code '    '
+remember to keep the links to other pages untouched now write me the fully updated code for both

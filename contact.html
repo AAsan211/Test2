@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Crew Zambia - Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="clean-crew-zambia-logo.jpg" alt="Clean Crew Zambia Logo" style="height: 40px; width: 40px;">
+            </a>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="about-us.html">About Us</a> 
+        </nav>
+    </header>
+
+    <section class="contact">
+        <!-- Add the image below -->
+        <div class="contact-image"></div>
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>For inquiries or to request our professional cleaning services, please feel free to get in touch with us through the following contact methods:</p>
+            <ul>
+                <li>Phone: <a href="tel:+260976836349 | +260962586998">+260976836349 | +260962586998</a></li>
+                <li>Email: <a href="mailto:cleancrewzambia@gmail.com">cleancrewzambia@gmail.com</a></li>
+                <li>Address: 123 Cleaning Street, Lusaka, Zambia, 1010</li>
+            </ul>
+
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form id="contactForm" method="POST">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add a link to navigate back to the home page -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Clean Crew Zambia. All rights reserved.</p>
+        <a href="about-us.html">About Us</a>
+    </footer>
+
+    <script>
+        // JavaScript to handle form submission and send data to PHP script asynchronously
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch("submit_form.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("Network response was not ok.");
+                }
+            })
+            .then(function(data) {
+                console.log(data); // Optional: Display the response from the PHP script
+                alert("Message sent successfully!"); // Optional: Show an alert to the user
+                form.reset(); // Optional: Clear the form fields after successful submission
+            })
+            .catch(function(error) {
+                console.error("Error occurred while submitting the form:", error);
+            });
+        });
+    </script>
+</body>
+</html>
